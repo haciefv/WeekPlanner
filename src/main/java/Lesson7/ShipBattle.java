@@ -35,78 +35,6 @@ public class ShipBattle {
         return true;
     }
 
-    public static void placeShip(int x, int y, int direction, int shipType, int[][] seaMap) {
-        if (direction == 0) {
-            for (int i = 0; i < shipType; i++) {
-                seaMap[x][y + i] = 1;
-            }
-        } else {
-            for (int i = 0; i < shipType; i++) {
-                seaMap[x + i][y] = 1;
-            }
-        }
-    }
-
-    public static int[][] mapGenerator() {
-        int[][] sea = new int[10][10];
-        for (int[] row : sea) {
-            Arrays.fill(row, 0);
-        }
-
-        int[] shipSizes = {5, 4, 3, 3, 2, 2};
-        List<List<int[]>> allShipCoordinates = new ArrayList<>();
-
-        for (int shipSize : shipSizes) {
-            boolean placed = false;
-            while (!placed) {
-                int x = (int) (Math.random() * 10);
-                int y = (int) (Math.random() * 10);
-                int direction = (int) (Math.random() * 2);
-
-                if (canLocate(x, y, direction, shipSize, sea)) {
-                    List<int[]> shipCoordinates = new ArrayList<>();
-                    if (direction == 0) {
-                        for (int i = 0; i < shipSize; i++) {
-                            sea[x][y + i] = 1;
-                            shipCoordinates.add(new int[]{x, y + i});
-                        }
-                    } else {
-                        for (int i = 0; i < shipSize; i++) {
-                            sea[x + i][y] = 1;
-                            shipCoordinates.add(new int[]{x + i, y});
-                        }
-                    }
-                    allShipCoordinates.add(shipCoordinates);
-                    placed = true;
-                }
-            }
-        }
-
-//        System.out.println("All Ship Coordinates:");
-//        for (int i = 0; i < allShipCoordinates.size(); i++) {
-//            System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
-//        }
-
-        return sea;
-    }
-
-    private static void shooter(Scanner sc, List<List<int[]>> shipCordiinates) {
-
-        List<List<int[]>> shootedCoordinates = new ArrayList<>();
-        for (int z = 0; z < 25; z++) {
-            if (shipCordiinates.equals(shootedCoordinates)) {
-                System.out.println("You are Winner!");
-                break;
-            }
-            System.out.println("Enter x cell:");
-            int xCell = sc.nextInt();
-            System.out.println("Enter y cell:");
-            int yCell = sc.nextInt();
-            shootedCoordinates.add(Collections.singletonList(new int[]{xCell, yCell}));
-
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[][] sea = new int[10][10];
@@ -143,20 +71,8 @@ public class ShipBattle {
             }
         }
 
-        System.out.println("All Ship Coordinates:");
-        for (int i = 0; i < allShipCoordinates.size(); i++) {
-            System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
-        }
 
-//
-//        System.out.println("Sea Grid:");
-//        for (int i = 0; i < sea.length; i++) {
-//            for (int j = 0; j < sea[i].length; j++) {
-//                System.out.print(sea[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//
+
 
         List<List<int[]>> shootedCoordinates = new ArrayList<>();
         boolean winner = false;
@@ -167,9 +83,7 @@ public class ShipBattle {
                 winner = true;
                 break;
             }
-//            for (int i = 0; i < allShipCoordinates.size(); i++) {
-//                System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
-//            }
+
             System.out.println("Enter [x,y] cell:");
             String cell = sc.nextLine().trim();
             int xCell = Integer.parseInt(String.valueOf(cell.charAt(1)));
@@ -195,10 +109,8 @@ public class ShipBattle {
                         if (allShipCoordinate.isEmpty()) {
                             allShipCoordinates.remove(i);
                             i--;
-                            shooted = true;
                             System.out.println("Destroyed!");
                         } else {
-                            shooted = true;
                             System.out.println("Damaged!");
                         }
                     }
