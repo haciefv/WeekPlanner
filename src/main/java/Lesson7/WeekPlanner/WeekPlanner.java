@@ -31,7 +31,7 @@ public class WeekPlanner {
             for (int i = 0; i < schedule.length; i++) {
                 String[] couple = schedule[i];
                 if (couple[0].equalsIgnoreCase(userInput)) {
-                    System.out.println(couple[0] + ": " + couple[1]);
+                    System.out.println(couple[0] + ":  " + couple[1]);
                     found = true;
                 } else if (userInput.split(" ")[0].equalsIgnoreCase("change")) {
                     if (couple[0].equalsIgnoreCase(userInput.split(" ")[1])) {
