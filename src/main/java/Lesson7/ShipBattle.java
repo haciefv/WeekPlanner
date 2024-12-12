@@ -82,10 +82,10 @@ public class ShipBattle {
             }
         }
 
-        System.out.println("All Ship Coordinates:");
-        for (int i = 0; i < allShipCoordinates.size(); i++) {
-            System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
-        }
+//        System.out.println("All Ship Coordinates:");
+//        for (int i = 0; i < allShipCoordinates.size(); i++) {
+//            System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
+//        }
 
         return sea;
     }
@@ -148,15 +148,15 @@ public class ShipBattle {
             System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
         }
 
-
-        System.out.println("Sea Grid:");
-        for (int i = 0; i < sea.length; i++) {
-            for (int j = 0; j < sea[i].length; j++) {
-                System.out.print(sea[i][j] + " ");
-            }
-            System.out.println();
-        }
-
+//
+//        System.out.println("Sea Grid:");
+//        for (int i = 0; i < sea.length; i++) {
+//            for (int j = 0; j < sea[i].length; j++) {
+//                System.out.print(sea[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//
 
         List<List<int[]>> shootedCoordinates = new ArrayList<>();
         boolean winner = false;
@@ -167,13 +167,13 @@ public class ShipBattle {
                 winner = true;
                 break;
             }
-            for (int i = 0; i < allShipCoordinates.size(); i++) {
-                System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
-            }
-            System.out.println("Enter x cell:");
-            int xCell = sc.nextInt();
-            System.out.println("Enter y cell:");
-            int yCell = sc.nextInt();
+//            for (int i = 0; i < allShipCoordinates.size(); i++) {
+//                System.out.println(Arrays.deepToString(allShipCoordinates.get(i).toArray()));
+//            }
+            System.out.println("Enter [x,y] cell:");
+            String cell = sc.nextLine().trim();
+            int xCell = Integer.parseInt(String.valueOf(cell.charAt(1)));
+            int yCell = Integer.parseInt(String.valueOf(cell.charAt(3))) ;
             int[] selectedCell = new int[]{xCell, yCell};
 
             shootedCoordinates.add(Collections.singletonList(new int[]{xCell, yCell}));
@@ -195,8 +195,10 @@ public class ShipBattle {
                         if (allShipCoordinate.isEmpty()) {
                             allShipCoordinates.remove(i);
                             i--;
+                            shooted = true;
                             System.out.println("Destroyed!");
                         } else {
+                            shooted = true;
                             System.out.println("Damaged!");
                         }
                     }
