@@ -1,4 +1,4 @@
-package Lesson7;
+package Lesson7.NumberGuess;
 
 import java.util.Scanner;
 
