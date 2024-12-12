@@ -1,4 +1,4 @@
-package Lesson7;
+package Lesson7.ShipBattle.Lesson10;
 
 import java.util.*;
 
