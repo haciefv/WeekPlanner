@@ -35,7 +35,7 @@ public class WeekPlanner {
                     found = true;
                 } else if (userInput.split(" ")[0].equalsIgnoreCase("change")) {
                     if (couple[0].equalsIgnoreCase(userInput.split(" ")[1])) {
-                        System.out.println("Please, input new tasks for kas "+couple[0]);
+                        System.out.println("Please, input new tasks for  "+couple[0]);
                         String newTask = sc.nextLine();
                         schedule[i][1]=newTask;
                         System.out.println(couple[0] + ": " + couple[1]);
