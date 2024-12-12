@@ -41,7 +41,7 @@ public class WeekPlanner {
                         System.out.println(couple[0] + ": " + couple[1]);
                         found=true;
                     }
-                }
+                 }
             }
             if (!found){
                 System.out.println("Sorry, I don't understand you, please try again.");
